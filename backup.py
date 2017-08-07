@@ -29,10 +29,6 @@ def www_backup(source_dir, output_file):
     with tarfile.open(output_file, "w:gz") as tar:
         tar.add(source_dir, arcname=os.path.basename(source_dir))
 
-    #print ("\nBackup content: ")
-    #with tarfile.open(output_file, 'r') as tar:
-    #    for data in tar.getmembers():
-    #        print(data.name)
 
 for section in parser.sections():
 
