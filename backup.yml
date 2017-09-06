@@ -1,0 +1,15 @@
+timestamp: "{{ ansible_date_time.date }}"
+
+- hosts: '{{ target }}'
+  gather_facts: true
+  become: true
+  tasks:
+  
+  - name: Backup database
+    shell: pg_dump -Fc dbriskmarket > /tmp/db.dump
+    become: true
+    become_method: sudo
+    become_user: postgres
+    tag: backup
+  
+  - debug: msg="backup saved to {{ psql_dump_directory }}"
